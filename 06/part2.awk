@@ -10,9 +10,9 @@
 	    fishstate[i] = fishstate[i+1]
         fishstate[8] = tmp
         fishstate[6] += tmp
-	sum = 0
-	for (f in fishstate) sum += fishstate[f]
-	print "After day " d ": " sum " fishes"
     }
+    sum = 0
+    for (f in fishstate) sum += fishstate[f]
+    print "There are " sum " lanternfish"
     exit
 }
