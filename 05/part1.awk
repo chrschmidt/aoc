@@ -12,6 +12,6 @@
 }
 
 END {
-    for (point in map) if (map[point]>1) points++;
+    for (point in map) if (map[point]>1) points++
     print "result: " points
 }
