@@ -2,7 +2,7 @@
 
 /^[01]/ { data[NR] = $1 }
 
-function onecount(pos,arr,  count,i) {
+function onecount(pos, arr,  count, i) {
     count = 0
     for (i in arr)
         if (substr(arr[i],pos,1) == "1")
@@ -10,7 +10,7 @@ function onecount(pos,arr,  count,i) {
     return count
 }
 
-function reduce(pos,arr,value, count,i) {
+function reduce(pos, arr, value,  count, i) {
     for (i in arr)
         if (substr(arr[i],pos,1) != value)
             delete arr[i]
