@@ -7,9 +7,11 @@ If you see this unusual abort condition:
 
     (FILENAME != "input.txt") { exit }
 
-This is nedded for having the file executable via
+This is needed for having the file executable via
 
     #!/usr/bin/env -S awk -f ${_} -- input.txt
+
+because:
 
 1. Using env is necessary to give multiple paramaters, the script via ${_} and input.txt
 2. awk itself does not see multiple parameters - it will turn everything after -f into a single filename
