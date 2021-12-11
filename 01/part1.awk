@@ -1,12 +1,12 @@
 #!/usr/bin/env -S awk -f ${_} -- input.txt
+(FILENAME != "input.txt") { exit }
 
 {
-    if (count && $1 > last)
+    if (FNR > 1 && $1 > last)
         larger++
     last = $1
-    count++
 }
 
 END {
-    print larger " larger measurements";
+    print larger " larger measurements"
 }
