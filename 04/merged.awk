@@ -1,5 +1,5 @@
 #!/usr/bin/env -S gawk --bignum -f ${_} -- input.txt
-(FILENAME != "input.txt") { exit }
+(FNR < NR) { exit }
 
 BEGIN { PROCINFO["sorted_in"]="@ind_num_asc" }
 

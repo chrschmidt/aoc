@@ -1,8 +1,7 @@
 #!/usr/bin/env -S gawk --bignum -f ${_} -- input.txt
+(FNR < NR) { exit }
 
 BEGIN { PROCINFO["sorted_in"]="@ind_num_asc" }
-
-(FILENAME != "input.txt") { exit }
 
 function convert() {
     for (i=0; i<5; i++) {

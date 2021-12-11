@@ -1,6 +1,5 @@
 #!/usr/bin/env -S awk -f ${_} -- input.txt
-
-(FILENAME != "input.txt") { exit }
+(FNR < NR) { exit }
 
 {
     delete stack

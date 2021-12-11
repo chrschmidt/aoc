@@ -1,8 +1,7 @@
 #!/usr/bin/env -S awk -f ${_} -- input.txt
+(FNR < NR) { exit }
 
 BEGIN { digits[8] = "abcdefg" }
-
-(FILENAME != "input.txt") { exit }
 
 function ssort(a,  ret, i, tmp) {
     split(a, tmp, "")

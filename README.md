@@ -5,7 +5,7 @@ Written in awk, if needed augmented with bash.
 
 If you see this unusual abort condition:
 
-    (FILENAME != "input.txt") { exit }
+    (FNR < NR) { exit }
 
 This is needed for having the file executable via
 

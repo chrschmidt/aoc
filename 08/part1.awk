@@ -1,6 +1,5 @@
 #!/usr/bin/env -S awk -F| -f ${_} -- input.txt
-
-(FILENAME != "input.txt") { exit }
+(FNR < NR) { exit }
 
 {
     split ($2, digits, " ")
