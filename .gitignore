@@ -1,5 +1,4 @@
 *~
-input.txt
-demo.txt
+*.txt
 *debug*
 #*#
