@@ -1,4 +1,4 @@
-#!/usr/bin/env -S awk -f ${_} -- input.txt
+#!/usr/bin/env -S awk -F| -f ${_} -- input.txt
 
 (FILENAME != "input.txt") { exit }
 

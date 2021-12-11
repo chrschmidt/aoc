@@ -8,7 +8,7 @@ function atoi(a,  i, ret) {
             ret = or(ret, lshift(1, i-1))
     return ret
 }
-    
+
 ($11 == "|") {
     for (i=1; i<=NF; i++)
         if (length($i)==2) digits[1] = atoi($i)
