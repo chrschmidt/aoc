@@ -4,23 +4,17 @@
 (NF == 1) { start = $1 }
 (NF == 3) { insertions[$1] = $3 }
 
-function addcache(cache, elements,  i) {
-    for (i in cache)
-        elements[i] += cache[i]
-}
-
-function calccacheelement(pair, level) {
-    cache[level][pair][insertions[pair]] = 1
-    addcache(cache[level-1][substr(pair, 1, 1) insertions[pair]], cache[level][pair])
-    addcache(cache[level-1][insertions[pair] substr(pair, 2, 1)], cache[level][pair])
-}
+function addcache(cache, elements,  i) { for (i in cache) elements[i] += cache[i] }
 
 function buildcache(depth,  level, pair) {
     for (pair in insertions)
         cache[0][pair][insertions[pair]] = 1
     for (level=1; level<depth; level++)
-        for (pair in insertions)
-            calccacheelement(pair, level)
+        for (pair in insertions) {
+            cache[level][pair][insertions[pair]] = 1
+	    addcache(cache[level-1][substr(pair, 1, 1) insertions[pair]], cache[level][pair])
+	    addcache(cache[level-1][insertions[pair] substr(pair, 2, 1)], cache[level][pair])
+	}
 }
 
 function calcpart(part, depth,  elements) {
