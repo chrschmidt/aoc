@@ -1,7 +1,13 @@
-# aoc2021
-Advent of Code 2021 Solutions
+# aoc
+Advent of Code Solutions
+
+See <https://adventofcode.com> for more information on what this is about.
 
 Written in GNU awk, if needed augmented with bash.
+
+part1.awk and, if existing, part2.awk are what's used for the solution.
+
+merged.awk merges both parts and might be streamlined/optimized further.
 
 If you see this unusual abort condition:
 
