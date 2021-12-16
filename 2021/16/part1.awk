@@ -9,7 +9,6 @@ function tobits(i, j, dec) {
         for (j=3; j>=0; j--)
             bits[4*(i-1)+3-j] = and(dec, lshift(1,j)) ? 1 : 0
     }
-        
 }
 
 function getbits(len,  i, ret) {
@@ -58,10 +57,6 @@ function readpacket(packet,  len, cont, data, ltid, dlen, splen, spnum, i, spc) 
 
 END {
     tobits()
-    do {
-        packets++
-        rd += readpacket(packet)
-        print "packet " packets " total " rd " " packet["version"] " " packet["type"]
-    } while (rd < 4*inputlen-11)
+    readpacket(packet)
     print "Part 1: " vsum
 }
