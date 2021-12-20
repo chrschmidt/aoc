@@ -9,7 +9,7 @@ function sfexplode(number,  i, level, lastnum, n) {
         if (substr(number, i, 1) == "[") {
             if (++level == 5) {
                 match(substr(number, lastnum), /([[:digit:]]*)([],[]+)\[([[:digit:]]+),([[:digit:]]+)\]([],[]+)([[:digit:]]*)/, n)
-                return (n[1,"length"] ? substr(number, 1, lastnum-1) n[1] + n[3] : "")  n[2] 0 n[5] (n[6,"length"] ? n[4] + n[6] substr(number, lastnum + RLENGTH) : "") 
+                return sfexplode((n[1,"length"] ? substr(number, 1, lastnum-1) n[1] + n[3] : "")  n[2] 0 n[5] (n[6,"length"] ? n[4] + n[6] substr(number, lastnum + RLENGTH) : ""))
             }
         } else if (substr(number, i, 1) == "]") level--
         else if (substr(number, i, 1) != "," && (substr(number, i-1, 1) == "," || substr(number, i-1, 1) == "[")) lastnum = i
@@ -18,17 +18,13 @@ function sfexplode(number,  i, level, lastnum, n) {
 }
 
 function sfsplit(number,  n) {
-    if (match(number, /[[:digit:]]{2,}/, n)) return substr(number, 1, RSTART-1) "[" int(n[0]/2) "," n[0]-int(n[0]/2) "]" substr(number, RSTART + RLENGTH)
+    if (match(number, /[[:digit:]]{2,}/, n)) return sfsplit(sfexplode(substr(number, 1, RSTART-1) "[" int(n[0]/2) "," n[0]-int(n[0]/2) "]" substr(number, RSTART + RLENGTH)))
     return number
 }
 
-function sfreduce(number, len) {
-    do {
-        len = length(number)
-        number = sfexplode(number)
-        if (len == length(number)) number = sfsplit(number)
-    } while (len != length(number))
-    return number
+function sfreduce(number) {
+    number = sfexplode(number)
+    return sfsplit(number)
 }
 
 function sfmagnitude(number,  numbers) {
