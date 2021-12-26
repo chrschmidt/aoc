@@ -1,12 +1,23 @@
 #!/usr/bin/env -S awk -f ${_} -- input.txt
 
+function min(a, b) { return a < b ? a : b }
 function max(a, b) { return a > b ? a : b }
 function abs(a) { return a < 0 ? -a : a }
 
 /^(on|off) / {
     match ($0, /(.*) x=(-?[[:digit:]]+)\.\.(-?[[:digit:]]+),y=(-?[[:digit:]]+)\.\.(-?[[:digit:]]+),z=(-?[[:digit:]]+)\.\.(-?[[:digit:]]+)/, n)
     mode[FNR] = (n[1]=="on" ? 1 : 0) 
-    children[0][n[2] "," n[3] "," n[4] "," n[5] "," n[6] "," n[7]]["order"] = FNR
+    cuboids[FNR] = n[2] "," n[3] "," n[4] "," n[5] "," n[6] "," n[7]
+    if (n[2]<=50 && n[3]>=-50 && n[4]<=50 && n[5]>=-50 && n[6]<=50 && n[7]>=-50) {
+        xmin = max(n[2], -50); xmax = min(n[3], 50)
+        ymin = max(n[4], -50); ymax = min(n[5], 50)
+        zmin = max(n[6], -50); zmax = min(n[7], 50)
+        for (x=xmin; x<=xmax; x++)
+            for (y=ymin; y<=ymax; y++)
+                for (z=zmin; z<=zmax; z++)
+                    if (n[1] == "on") reactor[x,y,z] = 1
+                    else delete reactor[x,y,z]
+    }
 }
 
 function getintersection(cuboida, cuboidb,  ca, cb, x, y, z) {
@@ -25,7 +36,6 @@ function getsize(cuboid,  c) {
 }
 
 function process(level, i, j, k, l, intersection, sorted, ik, jk, mo) {
-    print "Processing Level " level " with " length(children[level]) " nodes"
     children[level+1][0]
     asorti(children[level], sorted)
     l = length(sorted)
@@ -46,7 +56,6 @@ function process(level, i, j, k, l, intersection, sorted, ik, jk, mo) {
     delete children[level+1][0]
     if (length(children[level+1]) > 0)
         process(level+1)
-    print "Flattening Level " level
     for (i in children[level]) {
         if (!(i in flattened)) {
             flattened[i][0] = children[level][i]["order"]
@@ -65,10 +74,26 @@ function process(level, i, j, k, l, intersection, sorted, ik, jk, mo) {
     }
 }
 
-END {
+function add_cuboid(order, cuboid,  i, intersection, sum) {
+    if (!cuboid) return 0
+    children[0][order]
+    for (i=1; i<order; i++) {
+        intersection = getintersection(cuboid, cuboids[i])
+        if (intersection) children[0][intersection]["order"] = i
+    }
+    delete children[0][order]
     process(0)
     for (i in flattened)
         if (mode[flattened[i][0]])
             sum += flattened[i][1]
+    delete flattened
+    delete children
+    return mode[order] * getsize(cuboids[order]) - sum
+}
+
+END {
+    print "Part 1: " length(reactor)
+    for (i=1; i<=length(cuboids); i++)
+        sum += add_cuboid(i, cuboids[i])
     print "Part 2: " sum
 }
