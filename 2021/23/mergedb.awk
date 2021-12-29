@@ -66,14 +66,15 @@ function move(a, i, j, type, cavex, pos, coords, y, minmove) {
             continue
         type = substr(i, 1, 1)
         cavex = 4 + 2*type
-        if (board[cavex,3] == ".") {
-            for (y=4; y<=2+cavedepth; y++)
-                if (board[cavex,y] != ".")
-                    break
-            if (board[cavex,y] == "#")
-                minmove = min(minmove, trymove(i, type, pos, coords, cavex, y-1))
-        }
-        if (coords[2] != 2)
+        if (coords[2] == 2) {
+            if (board[cavex,3] == ".") {
+                for (y=4; y<=2+cavedepth; y++)
+                    if (board[cavex,y] != ".")
+                        break
+                if (board[cavex,y] == "#")
+                    minmove = min(minmove, trymove(i, type, pos, coords, cavex, y-1))
+            }
+        } else
             for (j in legal)
                 if (board[j,2] == ".")
                     minmove = min(minmove, trymove(i, type, pos, coords, int(j), 2))
