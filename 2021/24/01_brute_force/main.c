@@ -20,11 +20,7 @@ typedef uint64_t u64;
 static pthread_mutex_t startlock;
 static pthread_mutex_t resultlock;
 
-#ifdef PART2
-int startpos = 0;
-#else
-int startpos = 9*9*9*9-1;
-#endif
+int startpos;
 
 void getstartvals (u64 * vals) {
     pthread_mutex_lock (&startlock);
@@ -83,6 +79,15 @@ void chkresult (u64 * vals) {
 #endif
 
 int main() {
+#ifdef PART2
+    startpos = 0;
+#else
+    startpos = 9;
+    for (int i=1; i<basecount; i++)
+        startpos *= 9;
+    startpos--;
+#endif
+
     pthread_t threads[numthreads];
     pthread_mutex_init (&startlock, NULL);
     pthread_mutex_init (&resultlock, NULL);
