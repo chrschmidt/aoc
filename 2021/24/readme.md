@@ -2,13 +2,15 @@
 
 Unlike the other days, it's not possible to infer the solution reasonably by writing code from the description alone to process the input, as in all other days.
 
-## 01_brute_force - The Unreasonable Solution
+## Brute Force - The Unreasonable Solution
 
-The code in 01_brute_force still does exactly that, even if it means leaving the True Path of AWK. It uses awk to convert the math described by the input into a C function, which is then run with an arbitrary thread count for a full brute force.
+The code in merged.awk still does exactly that, even if it means leaving the True Path of AWK. It uses awk to convert the math described by the input into a C function, which is then run with an arbitrary thread count for a full brute force by means of main.c.
+
+Building is controlled by the Makefile.
 
 It turns out ok-ish on my desktop with ca. 1.5 minutes for part 1 and 5.5 minutes for part 2 with 32threads, probably running purely in L1.
 
-## 02_aoc_optimized - Fast enough for AWK
+## AoC Optimized - Fast enough for AWK
 
 If you look at the generated code, you'll notice that there's some kind of common theme:
 
@@ -34,5 +36,25 @@ If we want to read z=0 in the end, the number of multiplications can not be diff
 
 Implementing this yields shorter code, and also adds an early out for cases with a "0" outcome.
 
-The solution generates two awk scripts from the input and runs them.
+The solution in mergedb.awk generates two awk scripts from the input and runs them.
 
+## This is stack! - The fastest solution
+
+The previous generator effectively has two types of code between two loops:
+
+    z4 = (z3 * 26) + (w4 + 8)
+
+on the one hand for the "constant 1" case, and
+
+    if (((z4 % 26) - 8) != w5) continue
+    z5 = int(z4 / 26)
+
+on the other hand, for the other case. Since the ALU has no memory, this is its way to store a value: multiplying by a number (here: 26) gets it out of the way, the modulo operation retrieves the last value, and the division restores the state before the multiplication. This is effectively a stack.
+
+After all, the math operations "link" two input digits in a certain way - in the above example, this is
+
+    w4 + 8 - 8 = w5
+
+In other words, the fourth and fifth digit must be identical.
+
+The solution in mergedc.awk outputs the solutions straight.
