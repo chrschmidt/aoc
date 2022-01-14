@@ -26,7 +26,7 @@ function _printreg(r, val, reset) {
     if (reset)
         reg[r] = r "[" depth "]"
     needsprint[r] = 0
-}   
+}
 
 function printreg(r,  d) {
     _printreg(r, reg[r], 1)
@@ -76,8 +76,6 @@ function wrap(a, b, op,  wa, wb) {
 function resolve(x) {
     if (x ~ /^-?[[:digit:]]+$/)
         return int(x)
-    else if (!(x in reg))
-        return x
     else if (reg[x] ~ /^-?[[:digit:]]+$/)
         return int(reg[x])
     else if (x == iter[depth] || reg[x] == x "[" depth-1 "]")
@@ -93,9 +91,12 @@ function resolve(x) {
     start = reg[$2]
     r3 = resolve($3)
     if (reg[$2] == 0) reg[$2] = r3
-    else reg[$2] = wrap(reg[$2], r3, "+")
+    else if (r3 != 0) {
+        if (typeof(r3) == "number" && r3<0) reg[$2] = wrap(reg[$2], -r3, "-")
+        else                                reg[$2] = wrap(reg[$2], r3, "+")
+    }
     if (match(reg[$2], /^(-?[[:digit:]]+) \+ (-?[[:digit:]]+)$/, val))
-        reg[$2] = val[1] + val [2]
+        reg[$2] = val[1] + val[2]
     if (start != reg[$2])
         chkdep($2, start)
 }
@@ -128,9 +129,7 @@ function resolve(x) {
 
 /eql/ {
     start = reg[$2]
-    if (reg[$2] == 0 && $3 == "0") reg[$2] = 1
-    else if (reg[$2] == 1 && $3 == "0") reg[$2] = 0
-    else if (reg[$2] ~ / /) {
+    if (reg[$2] ~ / /) {
         arg = reg[$2]
         len = split(arg, parts)
         if (parts[len-1] == "==") {
@@ -166,16 +165,6 @@ function resolve(x) {
     reg[$2] = $2 "[" depth "]"
 }
 
-function gdeps(r,  i, retval) {
-    retval = ""
-    for (i in regname)
-        if (i in deps[r])
-            retval = retval i
-        else
-            retval = retval " "
-    return retval
-}
-
 END {
     flush()
     indent(); print "if (z[14] == 0) {" >> OUTFILE
@@ -184,7 +173,6 @@ END {
     indent(); print "return NULL;" >> OUTFILE
     depth--
     for (; depth>=BASECOUNT; depth--) { indent(); print "}" >> OUTFILE }
-    depth = 1
     print "    }" >> OUTFILE
     print "    return NULL;" >> OUTFILE
     print "}" >> OUTFILE
