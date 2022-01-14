@@ -8,7 +8,7 @@ The code in 01_brute_force still does exactly that, even if it means leaving the
 
 It turns out ok-ish on my desktop with ca. 1.5 minutes for part 1 and 5.5 minutes for part 2 with 32threads, probably running purely in L1.
 
-## 02_semi_optimized - Fast enough for AWK
+## 02_aoc_optimized - Fast enough for AWK
 
 If you look at the generated code, you'll notice that there's some kind of common theme:
 
@@ -30,8 +30,9 @@ So, depending on the outcome of the check against the input, z will be multiplie
 
     z[5] = (z[4] / 26) * y[5];
 
-If we want to read z=0 in the end, the number of multiplications can not be different from the number of divisions. At least in my input, the number of cases where the comparison can be derived to be contant "1" and the number of divisions is identical. This allows the assumption that all other cases must evaluate to 0.
+If we want to read z=0 in the end, the number of multiplications can not be different from the number of divisions. At least in my input, the number of cases where the comparison can be derived to be constant "1" and the number of divisions is identical. This allows the assumption that all other cases must evaluate to 0.
 
 Implementing this yields shorter code, and also adds an early out for cases with a "0" outcome.
 
 The solution generates two awk scripts from the input and runs them.
+
