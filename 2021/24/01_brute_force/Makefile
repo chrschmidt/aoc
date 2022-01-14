@@ -1,15 +1,15 @@
 BASECOUNT = 4
-CORES     = 32
+THREADS   = 32
 
 .PHONY: clean
 
 all: part1 part2
 
 part1: main.c part1.h
-	gcc -D basecount=$(BASECOUNT) -D numthreads=$(CORES) -Wall -march=native -O3 -lpthread $< -o $@
+	gcc -D basecount=$(BASECOUNT) -D numthreads=$(THREADS) -Wall -march=native -O3 -lpthread $< -o $@
 
 part2: main.c part2.h
-	gcc -D PART2 -D basecount=$(BASECOUNT) -D numthreads=$(CORES) -Wall -march=native -O3 -lpthread $< -o $@
+	gcc -D PART2 -D basecount=$(BASECOUNT) -D numthreads=$(THREADS) -Wall -march=native -O3 -lpthread $< -o $@
 
 part1.h: generate.awk | input.txt
 	awk -f $< -v BASECOUNT=$(BASECOUNT) -v OUTFILE=$@ -v GENERATE=down -- $|
