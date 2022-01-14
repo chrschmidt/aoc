@@ -11,10 +11,10 @@ part1: main.c part1.h
 part2: main.c part2.h
 	gcc -D PART2 -D basecount=$(BASECOUNT) -D numthreads=$(THREADS) -Wall -march=native -O3 -lpthread $< -o $@
 
-part1.h: generate.awk | input.txt
+part1.h: merged.awk | input.txt
 	awk -f $< -v BASECOUNT=$(BASECOUNT) -v OUTFILE=$@ -v GENERATE=down -- $|
 
-part2.h: generate.awk | input.txt
+part2.h: merged.awk | input.txt
 	awk -f $< -v BASECOUNT=$(BASECOUNT) -v OUTFILE=$@ -v GENERATE=up -- $|
 
 clean:
