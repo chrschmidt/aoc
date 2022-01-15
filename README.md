@@ -3,7 +3,7 @@ Advent of Code Solutions
 
 See <https://adventofcode.com> for more information on what this is about.
 
-Written in GNU awk, if needed augmented with bash.
+Written in GNU awk, if needed augmented with other languages.
 
 part1.awk and, if existing, part2.awk are what's used for the solution.
 
