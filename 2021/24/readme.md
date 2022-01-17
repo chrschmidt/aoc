@@ -8,7 +8,7 @@ The code in merged.awk still does exactly that, even if it means leaving the Tru
 
 Building is controlled by the Makefile.
 
-It turns out ok-ish on my desktop with ca. 1.5 minutes for part 1 and 5.5 minutes for part 2 with 32threads, probably running purely in L1.
+It turns out ok-ish on my desktop with ca. 1.5 minutes for part 1 and 5.5 minutes for part 2 with 32 threads, probably running purely in L1.
 
 ## AoC Optimized - Fast enough for AWK
 
@@ -38,7 +38,7 @@ Implementing this yields shorter code, and also adds an early out for cases with
 
 The solution in mergedb.awk generates two awk scripts from the input and runs them.
 
-## This is stack! - The fastest solution
+## This is a stack! - The fastest solution
 
 The previous generator effectively has two types of code between two loops:
 
@@ -57,4 +57,4 @@ After all, the math operations "link" two input digits in a certain way - in the
 
 In other words, the fourth and fifth digit must be identical.
 
-The solution in mergedc.awk outputs the solutions straight.
+The solution in mergedc.awk outputs the solutions straight by matching pairs and their relation, then individually searching for the largest (part 1) and smallest (part 2) solution.
