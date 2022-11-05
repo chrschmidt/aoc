@@ -1,5 +1,6 @@
 *~
 *.txt
+*.old
 *debug*
 #*#
 untracked
