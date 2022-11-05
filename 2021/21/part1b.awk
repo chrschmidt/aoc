@@ -17,9 +17,9 @@ function step(posa, scorea, posb, scoreb, player) {
         posb    = (posb + roll) % 10
         scoreb += posb + 1
     }
-    if (scorea >= 1000) print "Part 1: " scoreb * rolls
-    else if (scoreb >= 1000) print "Part 1: " scorea * rolls
-    else step(posa, scorea, posb, scoreb, 0)
+    if (scorea >= 1000) print "Part 1: " scoreb * rolls " "
+    else if (scoreb >= 1000) print "Part 1: " scorea * rolls " "
+    else step(posa, scorea, posb, scoreb, 1-player)
 }
 
 END {
