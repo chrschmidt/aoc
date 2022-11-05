@@ -56,7 +56,7 @@ function solve(part) {
         if (x<maxx) chkup(x+1, y, low+riskmap[y][x+1])
         if (y<maxy) chkup(x, y+1, low+riskmap[y+1][x])
         if (x>1)    chkup(x-1, y, low+riskmap[y][x-1])
-        if (y<1)    chkup(x, y-1, low+riskmap[y-1][x])
+        if (y>1)    chkup(x, y-1, low+riskmap[y-1][x])
     } while (1)
     print "Part " part ": " allcandidates[maxx,maxy]
     delete candidates
