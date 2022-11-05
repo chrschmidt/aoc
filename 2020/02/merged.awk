@@ -23,4 +23,3 @@ END {
     print "Part 1: " valid1
     print "Part 2: " valid2
 }
-

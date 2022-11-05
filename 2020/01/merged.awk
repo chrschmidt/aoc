@@ -16,4 +16,3 @@ END {
                     print "Part 2: " entry[i]*entry[j]*entry[k]
 
 }
-
