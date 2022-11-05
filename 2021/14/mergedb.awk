@@ -20,7 +20,7 @@ function calcpart(part, depth,  pairs, elements) {
     }
     for (pair in pairs)
 	elements[substr(pair,2,1)] += pairs[pair]
-    elements[substr(pair,1,1)]++
+    elements[substr(start,1,1)]++
     asort(elements, elements, "@val_num_asc")
     print "Part " part ": " elements[length(elements)] - elements[1]
 }
