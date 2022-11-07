@@ -19,7 +19,7 @@ This is needed for having the file executable via
 
 because:
 
-1. Using env is necessary to give multiple paramaters, the script via ${_} and input.txt
+1. Using env is necessary to give multiple parameters, the script via ${_} and input.txt
 2. awk itself does not see multiple parameters - it will turn everything after -f into a single filename
 3. env appends the name of the script at the end of the input line
 4. awk will happily process its program as input
