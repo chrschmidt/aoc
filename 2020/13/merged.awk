@@ -1,4 +1,4 @@
-#!/usr/bin/env -S /bin/sh -c "exec awk -f ${_} input.txt" #
+#!/usr/bin/env -S /bin/sh -c "exec awk -f ${_} input.txt"
 
 /^[0-9]+$/ { timestamp = $1 }
 /,/ { split($0,busses,",") }
