@@ -14,7 +14,6 @@ END {
         numbers[prev]=turn-1
         if (turn == 2020)
             print "Part 1: " last
-
     }
     print "Part 2: " last
 }
