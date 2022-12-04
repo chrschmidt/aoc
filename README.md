@@ -3,11 +3,23 @@ Advent of Code Solutions
 
 See <https://adventofcode.com> for more information on what this is about.
 
-Written in GNU awk, if needed augmented with other languages.
+# Language
 
-part1.awk and, if existing, part2.awk are what's used for the solution.
+Written in GNU awk, if needed augmented with other languages. All of AoC is based on text input, which is parsed and processed.
+
+AWK is the obvious choice for this, except when it isn't and becomes painful.
+
+# Solutions
+
+part1.awk and part2.awk, if existing, are what's used for a single solution.
 
 merged.awk merges both parts and might be streamlined/optimized further.
+
+mergedb.awk, mergedc.awk, ... if existing are further optimizations, for profit through fun.
+
+# The hashbang
+
+## Old style
 
 If you see this unusual abort condition:
 
@@ -24,6 +36,8 @@ because:
 3. env appends the name of the script at the end of the input line
 4. awk will happily process its program as input
 5. Sometimes this will mess up the results, and so an extra abort is inserted
+
+## New style
 
 At some point I realized that I can save that loc by double wrapping:
 
