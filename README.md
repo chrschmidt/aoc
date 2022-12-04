@@ -24,3 +24,7 @@ because:
 3. env appends the name of the script at the end of the input line
 4. awk will happily process its program as input
 5. Sometimes this will mess up the results, and so an extra abort is inserted
+
+At some point I realized that I can save that loc by double wrapping:
+
+    #!/usr/bin/env -S /bin/sh -c "exec awk -f ${_} -- input.txt"
