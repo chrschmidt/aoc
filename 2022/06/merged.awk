@@ -9,7 +9,7 @@ function part(seqlen,  i, j, t) {
             return i+seqlen
     }
 }
-    
+
 {
     split($0, a, "")
     print "Part 1: " part(4)
