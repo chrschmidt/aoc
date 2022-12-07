@@ -11,7 +11,7 @@
         for (row=1;row<=length(rd[col]);row++)
             if (rd[col][row]!=" ")
                 stacks[col+1][length(rd[col])-row]=rd[col][row]
-}     
+}
 
 /move/ {
     for (i=0; i<$2; i++) {
