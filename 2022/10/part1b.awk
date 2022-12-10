@@ -2,9 +2,6 @@
 
 function cycle() { if (!((++cycles+20)%40)) sum+=cycles*X }
 
-/addx/ { cycle(); cycle(); X+=$2 }
-/noop/ { cycle() }
+{ cycle(); if ($2) { cycle(); X+=$2 } }
 
-END {
-    print "Part 1: " sum
-}
+END { print "Part 1: " sum }

@@ -7,6 +7,5 @@ function cycle() {
     else                      printf " "
     if (++cycles%40==0)       printf "\n"
 }
-        
-/addx/ { cycle(); cycle(); X+=$2 }
-/noop/ { cycle() }
+
+{ cycle(); if ($2) { cycle(); X+=$2 } }
