@@ -13,17 +13,20 @@ AWK is the obvious choice for this, except when it isn't and becomes painful.
 
 part1.awk and part2.awk, if existing, are what's used for a single solution.
 
-merged.awk merges both parts and might be streamlined/optimized further.
+merged.awk is a combined solution and might be streamlined/optimized further, if it exists on top of part1/part2.
 
 mergedb.awk, mergedc.awk, ... if existing are further optimizations, for profit through fun.
+
+Solutions in the repository are usually polished and not necessarily exactly the ones used for solving.
 
 # The hashbang
 
 ## Old style
 
-If you see this unusual abort condition:
+If you see one of these abort conditions:
 
     (FNR < NR) { exit }
+    (FILENAME != "input.txt") { exit }
 
 This is needed for having the file executable via
 
