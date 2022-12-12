@@ -6,8 +6,8 @@ BEGIN { for (i=97; i<=122; i++) chars[sprintf("%c", i)]=i-97 }
     split($1,a,"")
     for (x in a)
         if (a[x] in chars) map[x,NR]=chars[a[x]]
-        else if (a[x]=="S") { s=x SUBSEP NR; map[s]=0 }
-        else if (a[x]=="E") { e=x SUBSEP NR; map[e]=25 }
+        else if (a[x]=="S") map[s=x SUBSEP NR]=0
+        else if (a[x]=="E") map[e=x SUBSEP NR]=25
 }
 
 function try(x,y,l,s) {
@@ -18,7 +18,6 @@ function try(x,y,l,s) {
 }
 
 function expand(curstep, res) {
-    res=0
     for (pos in front) {
         delete front[pos]
         split(pos,coords,SUBSEP)
@@ -32,7 +31,7 @@ function expand(curstep, res) {
 
 END {
     for (start in map)
-        if (map[start]==0) {
+        if (start in map && map[start]==0) {
             delete wave
             delete front
             wave[start]=0
