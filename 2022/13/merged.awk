@@ -34,9 +34,8 @@ END {
     lines[length(lines)+1]="[[2]]"
     lines[length(lines)+1]="[[6]]"
     asort(lines,lines,"scompare")
-    key=1
     for (i in lines)
         if (lines[i]=="[[2]]" || lines[i]=="[[6]]")
-            key*=i
+            key=key?key*i:i
     print "Part 2: " key
 }
