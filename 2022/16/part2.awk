@@ -62,6 +62,6 @@ function calcscore(time1,time2,pos1,pos2,score, v) {
 
 END {
     calcpaths()
-    calcscore(26,0,"AA","AA",0)
+    calcscore(26,26,"AA","AA",0)
     print "Part 2: " highscore
 }
