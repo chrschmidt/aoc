@@ -1,9 +1,8 @@
 #!/usr/bin/env -S /bin/sh -c "exec awk -f ${_} input.txt"
 
 {
-    monkeys[mshort=substr($1,1,4)][0]=$2
-    for (i=3;i<=NF;i++)
-        monkeys[mshort][i-2]=$i
+    for (i=2;i<=NF;i++)
+        monkeys[substr($1,1,4)][i-2]=$i
 }
 
 function getval(monkey) {
@@ -12,7 +11,7 @@ function getval(monkey) {
         else if (op=="-") return getval(monkeys[monkey][0]) - getval(monkeys[monkey][2])
         else if (op=="*") return getval(monkeys[monkey][0]) * getval(monkeys[monkey][2])
         else if (op=="/") return int(getval(monkeys[monkey][0]) / getval(monkeys[monkey][2]))
-    } else return monkeys[monkey][0] 
+    } else return monkeys[monkey][0]
 }
 
 END {

@@ -6,13 +6,12 @@
 }
 
 function getval(monkey) {
-    if (monkey~/[0-9]+/) return monkey
     if (1 in monkeys[monkey]) {
         if ((op=monkeys[monkey][1])=="+") return getval(monkeys[monkey][0]) + getval(monkeys[monkey][2])
         else if (op=="-") return getval(monkeys[monkey][0]) - getval(monkeys[monkey][2])
         else if (op=="*") return getval(monkeys[monkey][0]) * getval(monkeys[monkey][2])
         else return int(getval(monkeys[monkey][0]) / getval(monkeys[monkey][2]))
-    } else return monkeys[monkey][0] 
+    } else return monkeys[monkey][0]
 }
 
 function hashumn(monkey) {
@@ -23,10 +22,10 @@ function hashumn(monkey) {
 
 function precalc(monkey) {
     if (!(1 in monkeys[monkey])) return
-    if (!hashumn(monkeys[monkey][0])) monkeys[monkey][0]=getval(monkeys[monkey][0])
-    else precalc(monkeys[monkey][0])
-    if (!hashumn(monkeys[monkey][2])) monkeys[monkey][2]=getval(monkeys[monkey][2])
-    else precalc(monkeys[monkey][2])
+    if (hashumn(monkeys[monkey][0])) precalc(monkeys[monkey][0])
+    else monkeys[monkey][0]=getval(monkeys[monkey][0])
+    if (hashumn(monkeys[monkey][2])) precalc(monkeys[monkey][2])
+    else monkeys[monkey][2]=getval(monkeys[monkey][2])
 }
 
 function left(monkey) { return monkeys[monkey][0]~/[0-9]+/ }
@@ -39,7 +38,7 @@ function part2(monkey,value) {
     else if (op=="-") return part2(m(monkey),left(monkey)?v(monkey)-value:value+v(monkey))
     else if (op=="*") return part2(m(monkey),value/v(monkey))
     else return part2(m(monkey),left(monkey)?int(v(monkey)/value):value*v(monkey))
-} 
+}
 
 END {
     print "Part 1: " getval("root")
