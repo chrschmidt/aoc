@@ -166,7 +166,7 @@ int main () {
     for (int k=0; k<10000; k++) {
         for (int i=0;i<20000000;i++) {
             for (int j=0;j<5;j++)
-                maplen = insert(j, maplen);
+                maplen = insert (j, maplen);
             if (maplen > (mapsize-25))
                 maplen = compress (maplen);
             if (jetpos > jetlen)
