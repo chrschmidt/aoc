@@ -19,8 +19,7 @@ static const u32 rocks[5][3] = {
     {2,5,771}
 };
 
-char * cjet;
-u8 * jet;
+char * jet;
 int jetpos;
 int jetlen;
 mapline * map;
@@ -51,20 +50,20 @@ int load (const char * fname) {
         printf ("Failed stat(%s): %s\n", fname, strerror (errno));
         return 1;
     }
-    cjet = malloc (sb.st_size+1);
+    jet = malloc (sb.st_size+1);
     file = fopen (fname, "r");
     if (!file) {
         printf ("Failed to fopen(%s): %s\n", fname, strerror (errno));
         return 1;
     }
-    if (fgets (cjet, sb.st_size+1, file) == NULL) {
+    if (fgets (jet, sb.st_size+1, file) == NULL) {
         printf ("Failed to fread(%s): %s\n", fname, strerror (errno));
         return 1;
     }
     fclose (file);
-    jetlen = strlen (cjet);
-    while (cjet[jetlen-1] == '\r' || cjet[jetlen-1] == '\n') {
-        cjet[jetlen-1] = 0;
+    jetlen = strlen (jet);
+    while (jet[jetlen-1] == '\r' || jet[jetlen-1] == '\n') {
+        jet[jetlen-1] = 0;
         jetlen--;
     }
     printf ("read %d characters\n", jetlen);
@@ -72,9 +71,8 @@ int load (const char * fname) {
 }
 
 void init() {
-    jet = malloc (2*jetlen);
-    memcpy (jet, cjet, jetlen);
-    memcpy (jet+jetlen, cjet, jetlen);
+    jet = realloc (jet, 2*jetlen);
+    memcpy (jet+jetlen, jet, jetlen);
     for (int rock=0; rock<5; rock++)
         for (int j=0; j<16; j++) {
             spos[rock][j]=2;
@@ -139,7 +137,8 @@ int compress (int maplen) {
 
 int main () {
     struct timespec start, end;
-    load ("input.txt");
+    if (load ("input.txt"))
+        return 1;
     init();
 
     int maplen = 1;
