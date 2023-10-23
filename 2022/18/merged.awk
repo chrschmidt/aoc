@@ -9,7 +9,7 @@
         if ($1<minx) minx=$1; if ($1>maxx) maxx=$1;
         if ($2<miny) miny=$2; if ($2>maxy) maxy=$2;
         if ($3<minz) minz=$3; if ($3>maxz) maxz=$3;
-        
+
         if ($1-1 SUBSEP $2 SUBSEP $3 in cubes) { cubes[$1,$2,$3]--; cubes[$1-1,$2,$3]-- }
         if ($1+1 SUBSEP $2 SUBSEP $3 in cubes) { cubes[$1,$2,$3]--; cubes[$1+1,$2,$3]-- }
         if ($1 SUBSEP $2-1 SUBSEP $3 in cubes) { cubes[$1,$2,$3]--; cubes[$1,$2-1,$3]-- }
@@ -68,5 +68,5 @@ END {
     sum=0
     for (cube in cubes)
         sum+=cubes[cube]
-    print "Part 2: " sum    
+    print "Part 2: " sum
 }
