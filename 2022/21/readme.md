@@ -21,7 +21,7 @@ With four operations this yields eight combinations for the next `newvalue` to b
 3. `value = const - name`, or `newvalue = const - value`
 4. `value = name - const`, or `newvalue = value + const`
 5. `value = const * name`, or `newvalue = value / const`
-6. `value = name * sonst`, or (the same) `newvalue = value / const`
+6. `value = name * const`, or (the same) `newvalue = value / const`
 7. `value = const / name`, or `newvalue = const / value`
 8. `value = name / const`, or `newvalue = value * const`
 
