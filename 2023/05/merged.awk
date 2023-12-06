@@ -27,7 +27,7 @@ function overlap(l1,u1,l2,u2) {
 
 function lookupr(s,l,depth, i,ollo,olhi,drange) {
     if (depth>curmap)
-        return s;
+        return s
     for (i=1;i<=length(maps[depth]);i++)
         if (overlap(s,s+l-1,maps[depth][i][1],maps[depth][i][1]+maps[depth][i][2]-1)) {
             ollo=max(s,maps[depth][i][1])
