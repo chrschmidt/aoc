@@ -21,10 +21,11 @@ function prepranks(string, i,l,tmp) { l=split(string,tmp,""); for (i=1;i<=l;i++)
     delete ccnt
     for (i in cards) ccnt[cards[i]]++
     types[$1]=gettype(ccnt)
-    jacks=ccnt["J"]
-    delete ccnt["J"]
-    asort(ccnt)
-    ccnt[length(ccnt)]+=jacks
+    if ((jacks=ccnt["J"]) != 5) {
+        delete ccnt["J"]
+        asort(ccnt)
+        ccnt[length(ccnt)]+=jacks
+    }
     types2[$1]=gettype(ccnt)
 }
 
