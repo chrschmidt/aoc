@@ -14,10 +14,19 @@ function lcm(a,b) {
     return a*b/gcd(a,b)
 }
 
+# Manhattan distance between two coordinates
+function manhattan(x1,y1,x2,y2) {
+    return abs(x1-x2)+abs(y1-y2)
+}
+
 function min(a,b) {
     return (a<b)?a:b
 }
 
 function max(a,b) {
     return (a>b)?a:b
+}
+
+function abs(a) {
+    return (a<0)?-a:a
 }
