@@ -1,7 +1,5 @@
 #!/usr/bin/env -S /bin/sh -c "exec awk -f ${_} -f ../../aoclib.awk input.txt"
 
-BEGIN { delete positions }
-
 (NR==1) { lp=split($1,path,"") }
 
 /=/ {
