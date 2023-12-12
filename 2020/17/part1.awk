@@ -1,6 +1,6 @@
 #!/usr/bin/env -S /bin/sh -c "exec awk -f ${_} input.txt"
 
-function isset(x,y,z,a) { return x SUBSEP y SUBSEP z in a }
+function isset(x,y,z,a) { return (x,y,z) in a }
 
 {
     split($1,a,"")
@@ -48,10 +48,10 @@ function sn(x,y,z) {
     if (z<minz) minz=z
     if (z>maxz) maxz=z
 }
-    
+
 END {
     minx=miny=minz=maxz=0
-    
+
     for (loop=0;loop<6;loop++) {
         dump()
         for (x=minx-1;x<=maxx+1;x++)
@@ -70,4 +70,4 @@ END {
         delete newcube
     }
     print "Part 1: " length(cube)
-}    
+}

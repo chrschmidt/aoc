@@ -17,7 +17,7 @@ function readpacket(type, cont, data, tpc, tbitpos, tmp, i) {
     vsum += getbits(3)
     type = getbits(3)
     if (type == 4) {
-        do {           
+        do {
             cont = getbits(1)
             data = lshift(data, 4) + getbits(4)
         } while(cont)

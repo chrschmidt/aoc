@@ -4,7 +4,7 @@
     split($1,fish,",")
 
     for (d=1; d<=days; d++) {
-	fc = length(fish);
+	fc = length(fish)
 	for (f=1; f<=fc; f++)
 	    if (fish[f]) fish[f]--
 	    else {

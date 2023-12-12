@@ -28,7 +28,7 @@ function valid(start,run, pos,i,sum,upper) {
     }
     cached[start,run]=sum
     return sum
-}        
+}
 
 function calc(condition,groups) {
     delete cached

@@ -31,7 +31,7 @@ function step(i) {
     case "7": return sstep(i, x[i]-1,y[i], x[i],y[i]+1)
     case "F": return sstep(i, x[i]+1,y[i], x[i],y[i]+1)
     }
-}    
+}
 
 END {
     steps=0
@@ -40,7 +40,7 @@ END {
     if (world[ys][xs+1]~/[-7J]/) setxy(xs+1,ys)
     if (world[ys+1][xs]~/[|LJ]/) setxy(xs,ys+1)
     if (world[ys][xs-1]~/[-LF]/) setxy(xs-1,ys)
-    
+
     do { steps+=step(0) } while (step(1))
     print "Part 1: " steps-1
 

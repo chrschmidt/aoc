@@ -12,13 +12,13 @@ function dump() {
         for (x=1; x<=10; x++)
             if ((x,y) in octopuses)
                 printf ("%d", octopuses[x,y])
-        printf ("\n");
+        printf ("\n")
     }
-    printf ("\n");
+    printf ("\n")
 }
 
 function flash(fx, fy,  ix, iy) {
-    if (flashed[fx,fy]) return;
+    if (flashed[fx,fy]) return
     flashed[fx,fy] = 1
     for (iy=-1; iy<=1; iy++)
         for (ix=-1; ix<=1; ix++)

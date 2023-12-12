@@ -3,7 +3,7 @@
 
 function calculate() {
     sum1 += length(answers)
-    for (i in answers) if (answers[i] == members) sum2++;
+    for (i in answers) if (answers[i] == members) sum2++
     delete answers
     members=0
 }

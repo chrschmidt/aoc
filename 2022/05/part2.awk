@@ -16,13 +16,13 @@
 /move/ {
     for (i=0; i<$2; i++)
         stacks[$6][length(stacks[$6])] = stacks[$4][length(stacks[$4])-$2+i]
-    for (i=0; i<$2; i++) 
+    for (i=0; i<$2; i++)
         delete stacks[$4][length(stacks[$4])-1]
 }
 
 END {
     printf "Part 2: "
     for (i=1;i<=length(stacks); i++)
-        printf "%s", stacks[i][length(stacks[i])-1];
+        printf "%s", stacks[i][length(stacks[i])-1]
     printf "\n"
 }

@@ -45,7 +45,7 @@ function solve(part) {
     print "Part " part ": " candidates[maxx,maxy]
     delete candidates
     delete visited
-}    
+}
 
 END {
     solve(1)

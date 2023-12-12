@@ -19,7 +19,7 @@ function hasrecurse(haystack, needle,  bag) {
 function sumbags(color,  sum) {
     if (!isarray(bags[color])) return 1
     for (bag in bags[color])
-        sum += bags[color][bag]*sumbags(bag)
+        sum+=bags[color][bag]*sumbags(bag)
     return sum+1
 }
 

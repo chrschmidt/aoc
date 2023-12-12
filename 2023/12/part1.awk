@@ -27,7 +27,7 @@ function valid(start,run, pos,i,sum,upper) {
         case "?": sum+=valid(pos,run)
         }
     return sum
-}        
+}
 
 function calc(i,upper,pos,sum) {
     for (i=1;i<=length(sizes);i++) upper+=sizes[i]+1

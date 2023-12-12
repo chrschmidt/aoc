@@ -49,14 +49,14 @@ function insert(piece, top,pieceheight,i,canmove) {
                     canmove=0
             if (canmove)
                 for (i=0; i<pieceheight; i++)
-                    dropped[i]=lshift(dropped[i],1);
+                    dropped[i]=lshift(dropped[i],1)
         } else {
             for (i=0; i<pieceheight; i++)
                 if (and(rshift(dropped[i],1),map[top-pieceheight+i]))
                     canmove=0
             if (canmove)
                 for (i=0; i<pieceheight; i++)
-                    dropped[i]=rshift(dropped[i],1);
+                    dropped[i]=rshift(dropped[i],1)
         }
 # Check Drop
         for (i=0; i<pieceheight; i++)
@@ -72,7 +72,7 @@ function insert(piece, top,pieceheight,i,canmove) {
             for (i=0; i<pieceheight; i++)
                 map[top-pieceheight+i]=or(map[top-pieceheight+i],dropped[i])
         }
-            
+
         if (++depth > jetlen) depth=1
 #        dump(dropped,pieceheight)
     } while (dropping)

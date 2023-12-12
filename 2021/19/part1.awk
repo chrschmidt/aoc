@@ -68,7 +68,7 @@ function try_expand(inputa, dista, inputb, distb, start, seta, setb,  slen, rot,
             for (pb in inputb) {
                 setb[slen] = pb
                 for (i=0; i<slen; i++)
-                    if (dista[seta[i],pa] != distb[setb[i],pb]) 
+                    if (dista[seta[i],pa] != distb[setb[i],pb])
                         break
                 if (i == slen && try_expand(inputa, dista, inputb, distb, pa+1, seta, setb))
                     return 1

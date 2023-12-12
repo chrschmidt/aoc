@@ -9,8 +9,8 @@
 }
 
 /^[0-9]/ {
-    if (!ticket) ticket=$1;
-    else nearby[NR]=$1;
+    if (!ticket) ticket=$1
+    else nearby[NR]=$1
 }
 
 function in_ranges(val, ranges) {

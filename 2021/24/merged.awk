@@ -151,7 +151,7 @@ function resolve(x) {
     indent()
     depth++
     if (depth > BASECOUNT) {
-        if (GENERATE == "up") 
+        if (GENERATE == "up")
             print "for (" $2 "[" depth "]=1; " $2 "[" depth "]<=9; " $2 "[" depth "]++) {" >> OUTFILE
         else
             print "for (" $2 "[" depth "]=9; " $2 "[" depth "]>=1; " $2 "[" depth "]--) {" >> OUTFILE

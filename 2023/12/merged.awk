@@ -28,7 +28,7 @@ function valid(start,run, pos,i,sum,upper) {
         }
     cached[start,run]=sum
     return sum
-}        
+}
 
 function calc(i,upper,pos,sum) {
     for (i=1;i<=length(sizes);i++) upper+=sizes[i]+1

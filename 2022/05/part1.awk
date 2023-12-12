@@ -23,6 +23,6 @@
 END {
     printf "Part 1: "
     for (i=1;i<=length(stacks); i++)
-        printf "%s", stacks[i][length(stacks[i])-1];
+        printf "%s", stacks[i][length(stacks[i])-1]
     printf "\n"
 }

@@ -14,7 +14,7 @@ function setxy(xn,yn) {
     visited[xn,yn]=1
 }
 
-function viable(x,y) { return !(x SUBSEP y in visited) }
+function viable(x,y) { return !((x,y) in visited) }
 
 function dostep(i,xs,ys) {
     visited[xs,ys]=visited[x[i],y[i]]+1
@@ -38,7 +38,7 @@ function step(i, xt,yt) {
     case "7": return sstep(i, xt-1,yt, xt,yt+1)
     case "F": return sstep(i, xt+1,yt, xt,yt+1)
     }
-}    
+}
 
 END {
     found=0

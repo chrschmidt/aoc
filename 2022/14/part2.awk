@@ -32,9 +32,9 @@ END {
         do {
             moved=0
             if (sandy<bottomy) {
-                if (!(sandx SUBSEP sandy+1 in cave)) { sandy++; moved=1 }
-                else if (!(sandx-1 SUBSEP sandy+1 in cave)) { sandx--; sandy++; moved=1 }
-                else if (!(sandx+1 SUBSEP sandy+1 in cave)) { sandx++; sandy++; moved=1 }
+                if (!((sandx,sandy+1) in cave)) { sandy++; moved=1 }
+                else if (!((sandx-1,sandy+1) in cave)) { sandx--; sandy++; moved=1 }
+                else if (!((sandx+1,sandy+1) in cave)) { sandx++; sandy++; moved=1 }
                 else set(sandx,sandy,"o")
             } else {
                 set(sandx,sandy,"o")

@@ -62,7 +62,7 @@ function solve(part) {
     delete candidates
     delete allcandidates
     delete visited
-}    
+}
 
 END {
     solve(1)

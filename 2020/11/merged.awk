@@ -59,7 +59,7 @@ END {
     print "Part 1: " occupied
     for (y=1; y<=rows; y++)
         for (x=1; x<=columns; x++)
-            if (seats[y][x] == "#") seats[y][x] = "L";
+            if (seats[y][x] == "#") seats[y][x] = "L"
     do { occupied = round2() } while (!occupied)
     print "Part 2: " occupied
 }

@@ -17,7 +17,7 @@ function finalize(pos, drawn) {
     for (y=0; y<5; y++)
         for (x=0; x<100; x++)
             if (and (2^x, l[bnum*10+y]) && !(x in drawna)) sum += x
-    print "result: " sum * nums[drawn];
+    print "result: " sum * nums[drawn]
     exit
 }
 
@@ -26,9 +26,9 @@ function finalize(pos, drawn) {
 
 END {
     for (i in nums) {
-        drawna[nums[i]] = nums[i];
+        drawna[nums[i]] = nums[i]
         drawn = or (drawn, 2 ^ nums[i])
-        for (j in l) if (and (l[j], drawn) == l[j]) finalize(j, i);
+        for (j in l) if (and (l[j], drawn) == l[j]) finalize(j, i)
     }
-    print "not found...";
+    print "not found..."
 }

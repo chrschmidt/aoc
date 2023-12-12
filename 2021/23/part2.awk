@@ -29,7 +29,7 @@ function findamphis(x, y, i, coords, type, cave) {
                 solved++
                 deleted = 1
             }
-        } 
+        }
     } while (deleted)
     asorti(amphis, amphilist)
 }

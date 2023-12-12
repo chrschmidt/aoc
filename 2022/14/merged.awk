@@ -25,9 +25,9 @@ END {
         do {
             moved=0
             if (sandy==maxy) { if (!finished1++) { print "Part 1: " drops-1 } cave[sandx,sandy]="o" }
-            else if (!(sandx SUBSEP sandy+1 in cave)) { sandy++; moved=1 }
-            else if (!(sandx-1 SUBSEP sandy+1 in cave)) { sandx--; sandy++; moved=1 }
-            else if (!(sandx+1 SUBSEP sandy+1 in cave)) { sandx++; sandy++; moved=1 }
+            else if (!((sandx,sandy+1) in cave)) { sandy++; moved=1 }
+            else if (!((sandx-1,sandy+1) in cave)) { sandx--; sandy++; moved=1 }
+            else if (!((sandx+1,sandy+1) in cave)) { sandx++; sandy++; moved=1 }
             else cave[sandx,sandy]="o"
             if (sandy==0) { finished2=1; break }
         } while (moved)

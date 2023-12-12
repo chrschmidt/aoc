@@ -24,7 +24,7 @@ function step() {
     case "7": return sstep(xp-1,yp, xp,yp+1)
     case "F": return sstep(xp+1,yp, xp,yp+1)
     }
-}    
+}
 
 END {
     pipe[xp,yp]

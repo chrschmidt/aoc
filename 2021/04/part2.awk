@@ -16,7 +16,7 @@ function finalize(pos) {
     for (y=0; y<5; y++)
         for (x=0; x<100; x++)
             if (and (2^x, l[bnum*10+y]) && !(x in drawna)) sum += x
-    print "result: " sum * nums[pos];
+    print "result: " sum * nums[pos]
     exit
 }
 
@@ -24,9 +24,9 @@ function finalize(pos) {
 (FNR > 1 && NF) { for (i=1; i<6; i++) board[length(board)+1] = $i; if (length(board)==25) convert() }
 
 END {
-    numboards=length(l)/10;
+    numboards=length(l)/10
     for (i in nums) {
-        drawna[nums[i]] = nums[i];
+        drawna[nums[i]] = nums[i]
         drawn = or (drawn, 2 ^ nums[i])
         for (j in l) if (and (l[j], drawn) == l[j]) {
 	    bnum = int(j / 10)
@@ -35,5 +35,5 @@ END {
 	        else drawnb[bnum] = length(drawnb)
         }
     }
-    print "not found...";
+    print "not found..."
 }

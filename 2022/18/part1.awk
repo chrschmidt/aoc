@@ -2,12 +2,12 @@
 
 {
     cubes[$1,$2,$3]=6
-    if ($1-1 SUBSEP $2 SUBSEP $3 in cubes) { cubes[$1,$2,$3]--; cubes[$1-1 SUBSEP $2 SUBSEP $3]-- }
-    if ($1+1 SUBSEP $2 SUBSEP $3 in cubes) { cubes[$1,$2,$3]--; cubes[$1+1 SUBSEP $2 SUBSEP $3]-- }
-    if ($1 SUBSEP $2-1 SUBSEP $3 in cubes) { cubes[$1,$2,$3]--; cubes[$1 SUBSEP $2-1 SUBSEP $3]-- }
-    if ($1 SUBSEP $2+1 SUBSEP $3 in cubes) { cubes[$1,$2,$3]--; cubes[$1 SUBSEP $2+1 SUBSEP $3]-- }
-    if ($1 SUBSEP $2 SUBSEP $3-1 in cubes) { cubes[$1,$2,$3]--; cubes[$1 SUBSEP $2 SUBSEP $3-1]-- }
-    if ($1 SUBSEP $2 SUBSEP $3+1 in cubes) { cubes[$1,$2,$3]--; cubes[$1 SUBSEP $2 SUBSEP $3+1]-- }
+    if (($1-1,$2,$3) in cubes) { cubes[$1,$2,$3]--; cubes[$1-1,$2,$3]-- }
+    if (($1+1,$2,$3) in cubes) { cubes[$1,$2,$3]--; cubes[$1+1,$2,$3]-- }
+    if (($1,$2-1,$3) in cubes) { cubes[$1,$2,$3]--; cubes[$1,$2-1,$3]-- }
+    if (($1,$2+1,$3) in cubes) { cubes[$1,$2,$3]--; cubes[$1,$2+1,$3]-- }
+    if (($1,$2,$3-1) in cubes) { cubes[$1,$2,$3]--; cubes[$1,$2,$3-1]-- }
+    if (($1,$2,$3+1) in cubes) { cubes[$1,$2,$3]--; cubes[$1,$2,$3+1]-- }
 }
 
 END {

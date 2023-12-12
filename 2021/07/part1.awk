@@ -11,7 +11,7 @@ function abs(a) { if (a<0) return -a; else return a }
         horiz[crabs[c]]++
     }
 
-    minpos = -1;
+    minpos = -1
     for (pos=min; pos<=max; pos++) {
         fuel = 0
         for (h in horiz)

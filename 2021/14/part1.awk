@@ -21,5 +21,5 @@ END {
         elements[substr(start,i,1)]++
 
     asort(elements, elements, "@val_num_asc")
-    print "Part 1: " elements[length(elements)] - elements[1] 
+    print "Part 1: " elements[length(elements)] - elements[1]
 }

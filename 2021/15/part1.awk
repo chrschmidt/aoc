@@ -34,5 +34,5 @@ END {
         chkup(x, y-1, points[x,y]+riskmap[y-1][x])
         delete points[pos]
     } while (1)
-    print "Part 1: " points[maxx,maxy] 
+    print "Part 1: " points[maxx,maxy]
 }

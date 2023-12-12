@@ -43,7 +43,7 @@ function compare_hands(i1,v1,i2,v2, i,c1,c2,r1,r2) {
 
 function getwinnings(string, winnings) {
     prepranks(string)
-    l=asort(hands,newhands,"compare_hands");
+    l=asort(hands,newhands,"compare_hands")
     for (i=1;i<=l;i++)
         winnings+=i*bids[newhands[i]]
     return winnings

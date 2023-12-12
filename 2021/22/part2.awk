@@ -5,13 +5,13 @@ function abs(a) { return a < 0 ? -a : a }
 
 /^(on|off) / {
     match ($0, /(.*) x=(-?[[:digit:]]+)\.\.(-?[[:digit:]]+),y=(-?[[:digit:]]+)\.\.(-?[[:digit:]]+),z=(-?[[:digit:]]+)\.\.(-?[[:digit:]]+)/, n)
-    mode[FNR] = (n[1]=="on" ? 1 : 0) 
+    mode[FNR] = (n[1]=="on" ? 1 : 0)
     children[0][n[2] "," n[3] "," n[4] "," n[5] "," n[6] "," n[7]]["order"] = FNR
 }
 
 function getintersection(cuboida, cuboidb,  ca, cb, x, y, z) {
-    split(cuboida, ca, ",");
-    split(cuboidb, cb, ",");
+    split(cuboida, ca, ",")
+    split(cuboidb, cb, ",")
     if (ca[1]>cb[2] || cb[1]>ca[2] || ca[3]>cb[4] || cb[3]>ca[4] || ca[5]>cb[6] || cb[5]>ca[6]) return
     x[0] = ca[1]; x[1] = ca[2]; x[2] = cb[1]; x[3] = cb[2]; asort(x)
     y[0] = ca[3]; y[1] = ca[4]; y[2] = cb[3]; y[3] = cb[4]; asort(y)
@@ -20,7 +20,7 @@ function getintersection(cuboida, cuboidb,  ca, cb, x, y, z) {
 }
 
 function getsize(cuboid,  c) {
-    split(cuboid, c, ",");
+    split(cuboid, c, ",")
     return (abs(c[2]-c[1])+1) * (abs(c[4]-c[3])+1) * (abs(c[6]-c[5])+1)
 }
 

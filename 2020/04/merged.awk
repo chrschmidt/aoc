@@ -36,7 +36,7 @@ function validate(hgt) {
 }
 
 END {
-    if (isarray(passport)) validate();
+    if (isarray(passport)) validate()
     print "Part 1: " valid1
     print "Part 2: " valid2
 }

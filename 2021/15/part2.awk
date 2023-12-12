@@ -30,7 +30,7 @@ END {
         for (y=1; y<=maxy; y++)
             points[x,y] = 1
     candidates[1,1] = 0
-    
+
     do {
         low = INF
         for (p in candidates)
@@ -49,5 +49,5 @@ END {
         delete points[pos]
         delete candidates[pos]
     } while (1)
-    print "Part 2: " candidates[maxx,maxy] 
+    print "Part 2: " candidates[maxx,maxy]
 }

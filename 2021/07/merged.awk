@@ -4,7 +4,7 @@ function abs(a) { if (a<0) return -a; else return a }
 function sum(part, a) { return part == 1 ? a : a*(a+1)/2 }
 
 function calc(part,  fuel) {
-    minpos = -1;
+    minpos = -1
     for (pos=crabs[1]; pos<=crabs[length(crabs)]; pos++) {
         for (h in horiz)
             fuel[pos] += horiz[h] * sum(part, abs(h - pos))

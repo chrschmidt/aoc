@@ -23,7 +23,7 @@ function calc(empty, go,gi,sum,i,j,inc,dist) {
             }
     return sum
 }
-    
+
 END {
     print "Found " galaxies[0] " galaxies"
     print "Part 1: " calc(2)

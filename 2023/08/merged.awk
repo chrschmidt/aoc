@@ -29,7 +29,7 @@ END {
             if (curpos ~ /Z$/)
                 ends[curpos] = steps
             if(++pos>lp) pos=1
-        } 
+        }
     }
     l=asort(ends)
     for (i=2;i<=l;i++)

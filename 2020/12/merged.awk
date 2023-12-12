@@ -1,6 +1,6 @@
 #!/usr/bin/env -S awk -f ${_} -- input.txt
 
-BEGIN { dir = 90; x = 0; y = 0; wpx = 10; wpy = 1; sx = 0; sy = 0 }
+BEGIN { dir=90; x=0; y=0; wpx=10; wpy=1; sx=0; sy=0 }
 
 function abs(a) { if (a<0) return -a; else return a }
 
