@@ -7,7 +7,7 @@ BEGIN {
     xlate["0"]="R"; xlate["1"]="D"; xlate["2"]="L"; xlate["3"]="U"
 }
 
-function add(lagoon,c,l,x,y,last) {
+function add(lagoon,c,l, x,y,last) {
     x=lagoon["x"]
     y=lagoon["y"]
     last=lagoon["last"]
@@ -42,12 +42,12 @@ function add(lagoon,c,l,x,y,last) {
     add(lagoon2,xlate[substr($3,8,1)],strtonum("0x" substr($3,3,5)))
 }
 
-function start(lagoon,edge) {
-    edge=lagoon["first"] lagoon["last"]
-    if (edge~/RU|DL/) lagoon[0][0]="F"
-    if (edge~/RD|UL/) lagoon[0][0]="L"
-    if (edge~/LU|DR/) lagoon[0][0]="7"
-    if (edge~/LD|UR/) lagoon[0][0]="J"
+function start(lagoon, corner) {
+    corner=lagoon["first"] lagoon["last"]
+    if (corner~/RU|DL/) lagoon[0][0]="F"
+    if (corner~/RD|UL/) lagoon[0][0]="L"
+    if (corner~/LU|DR/) lagoon[0][0]="7"
+    if (corner~/LD|UR/) lagoon[0][0]="J"
     delete lagoon["x"]
     delete lagoon["y"]
     delete lagoon["first"]
