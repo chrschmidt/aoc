@@ -37,17 +37,17 @@ Insert the the result into (2) to get s. Check if both are positive, and if the 
 
 ## Part 2
 
-Given the wording is is safe to assume that a solution exists. This yields 6 unknowns for the required throw:
+Given the wording it is safe to assume that a solution exists. This yields 6 unknowns for the required throw:
 ```
 x(t) = x0 + t*dx
 y(t) = y0 + t*dy
 z(t) = z0 + t*dz
 ```
-To intersect with any line a, the same principle as in part1 can be used, except now the time needs to be identical, and the z axis taken into accound.
+To intersect with any line a, the same principle as in part1 can be used, except now the time needs to be identical, and the z axis taken into account.
 ```
 (1) x0+ta*dx = a1+ta*a4 ⟺ ta*dx-ta*a4 = a1-x0 ⟺ ta(dx-a4) = a1-x0 ⟺ ta = (a1-x0)/(dx-a4)
-(2) y0+ta*dy = a2+ta*a5 ⟺ … ⟺ ta = (a2-y0)/(dy-a5)
-(3) z0+ta*dz = a3+ta*a6 ⟺ … ⟺ ta = (a3-z0)/(dz-a6)
+(2) y0+ta*dy = a2+ta*a5 ⟺ ta = (a2-y0)/(dy-a5)
+(3) z0+ta*dz = a3+ta*a6 ⟺ ta = (a3-z0)/(dz-a6)
 ```
 equating (1) and (2) eliminates ta:
 ```
@@ -56,19 +56,23 @@ equating (1) and (2) eliminates ta:
 ⟺  a1*dy-a1*a5-x0*dy+x0*a5 = a2*dx-a2*a4-y0*dx+y0*a4
 ⟺  y0*dx-x0*dy = a2*dx-a2*a4+y0*a4-a1*dy+a1*a5-x0*a5
 ```
-The left-hand side now only has terms that are independent of what the line intersects with. Using a second line b this yields a very similar equation:
+The left-hand side now only has terms that are independent of what the line intersects with. Using a second line b yields a very similar equation:
 ```
 (5) y0*dx-x0*dy = b2*dx-b2*b4+y0*b4-b1*dy+b1*b5-x0*b5
 ```
-Equating these two yields:
+Equating (4) and (5) yields:
 ```
 (6) a2*dx-a2*a4+y0*a4-a1*dy+a1*a5-x0*a5 = b2*dx-b2*b4+y0*b4-b1*dy+b1*b5-x0*b5
 ⟺ -a5*x0+a4*y0+a2*dx-a1*dy-a2*a4+a1*a5 = -b5*x0+b4*y0+b2*dx-b1*dy-b2*b4+b1*b5
 ⟺ (b5-a5)*x0+(a4-b4)*y0+(a2-b2)*dx+(b1-a1)*dy = a2*a4-a1*a5-b2*b4+b1*b5
 ```
 Which is a linear equation with 4 variables. This means a system of (at least) four such equations is needed. There's two ways of expanding this:
-1. adding more lines, generating three more of (6), solving for t in at least two lines, solving for two points in two lines to get z coordinates, solving for dz from there, then solving for z0.
-2. expanding toward x/z and y/z for 3 equations with 6 variables, then adding only a third line for 6 equations, and directly getting z0.
+1. Adding more lines, generating three more of (6). This requires quite some further steps:
+    1. Solving for t in at least two lines
+    2. Solving for z coordinates of points on two lines using their t
+    3. Solving for dz from there (distance of the two z coords divided by the difference in t)
+    4. Solving the initial throw equations for z0
+2. Expanding toward x/z and y/z for 3 equations with 6 variables, then adding only a third line for 6 equations, and directly getting z0.
 
 Equating (1) and (3) leaves (7), with line b results in (8):
 ```
