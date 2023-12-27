@@ -28,7 +28,7 @@ This yields 14 types of worlds to be considered:
 1. Complete worlds in which any odd numbered point can be an ending point (the number of steps is odd, see part 1).
 2. Complete worlds in which any even numbered point can be an ending point. Since the length/height of a world is odd, every other world is odd/even.
 3. 4 V-shaped world on the outermost ends (<, ^, >, or v shaped, to be precise)
-4. 4 / or \ split world types, for each diagonal line. Since symmetry demands that we start in the middle of a world, We end up with differene shapes and corners. Corners depend on the two connected end points, and shapes/size alternate per line, so
+4. 8 / or \ split world types, for each diagonal line. Since symmetry demands that we start in the middle of a world, We end up with differene shapes and corners. Corners depend on the two connected end points, and shapes/size alternate per line, so
    1. 4 small triangualar block
    2. 4 large blocks where the triangle would expand beyond the reach of the block
 5. There might be more than one incomplete end, if the ending point is in the first half of the last block. We'll assume that the length of the data set is 131, which, with 26501365 steps, gets us to exactly to the end of the 202300th world after the starting block.
@@ -98,7 +98,7 @@ Multiply by the number of odd/even steps in a full world and continue.
 
 ### Outermost parts
 
-The outermost parts are all either odd or even, depending on the number world worlds. If the number of worlds between the center and the outside, d (1), is odd, the outside will have the same same counting as the center part, and thus be odd. It is neccessary to trace these block individually, with different starting points and lengths.
+The outermost parts are all either odd or even, depending on the number of worlds. If the number of worlds between the center and the outside, d (1), is odd, the outside will have the same same counting as the center part, and thus be odd. It is neccessary to trace these block individually, with different starting points and lengths.
 
 ### Incomplete blocks at the edges
 
