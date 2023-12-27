@@ -18,6 +18,6 @@ This is (mainly) due to the tracking. For flipflops the priod changes, as the fi
 
 ### 4. The output of these elements is periodic.
 
-With all high-pulse outputs being periodic, the lowest common multiple can be used to determine the overlaop of all periods again.
+With all high-pulse outputs being periodic, the lowest common multiple can be used to determine the overlap of all periods.
 
 
