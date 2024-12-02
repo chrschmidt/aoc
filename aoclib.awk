@@ -31,6 +31,11 @@ function abs(a) {
     return (a<0)?-a:a
 }
 
+function sign(a) {
+    if (a==0) return 0
+    return (a<0)?-1:1
+}
+
 # Linear equation system solver using Gaussian Elimination
 function gauss(m, h,w,i,j,k,mul1,mul2,t) {
     h=length(m); w=length(m[1])
