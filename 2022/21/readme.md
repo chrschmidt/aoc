@@ -6,7 +6,7 @@ Part 1 is pretty trivial and probably needs no further explanation.
 
 I solved part 2 in two steps:
 
-1. Flatten the "tree" of the calculations, unless only a constant remains on one side, and a path of rules leading um to "humn" remains (`precalc`)
+1. Flatten the "tree" of the calculations, unless only a constant remains on one side, and a path of rules leading up to "humn" remains (`precalc`)
 2. What's left are equations that need to be resolved in reverse: we know the desired result, `value`, the operation, `op`, another constant, `v(monkey)`, and the name of the next monkey, `m(monkey)`.
 
 These operations come in two form:
