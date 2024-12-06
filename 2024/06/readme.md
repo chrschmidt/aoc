@@ -18,3 +18,7 @@ Runtime: 0m18.726s
 Same intertwined approach, but backtracking is used instead of array copies which awk does not like.
 
 Runtime: 0m5.795s
+## mergedf.awk
+Same intertwined approach, but backtracking uses recursion instead of an array.
+
+Runtime: 0m5.438s
